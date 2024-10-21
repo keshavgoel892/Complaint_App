@@ -13,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 76, 157, 194),
       appBar: AppBar(
         title: Text('Home'),
         actions: [
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Container(
-        color: Colors.white,
+        color: Colors.lightBlue,//home screen background color
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(

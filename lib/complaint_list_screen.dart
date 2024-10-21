@@ -42,24 +42,25 @@ class ComplaintListScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class ComplaintCard extends StatelessWidget {
+}class ComplaintCard extends StatelessWidget {
   final QueryDocumentSnapshot complaint;
 
   ComplaintCard({required this.complaint});
 
   @override
   Widget build(BuildContext context) {
+    // Casting the document data to Map<String, dynamic>
+    final complaintData = complaint.data() as Map<String, dynamic>;
+
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: ExpansionTile(
         title: Text(
-          complaint['name'] ?? 'Unknown',
+          complaintData['name'] ?? 'Unknown',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(
-          'Category: ${complaint['category'] ?? 'N/A'} - ${_formatTimestamp(complaint['timestamp'])}',
+          'Category: ${complaintData['category'] ?? 'N/A'} - ${_formatTimestamp(complaintData['timestamp'])}',
         ),
         children: [
           Padding(
@@ -69,23 +70,25 @@ class ComplaintCard extends StatelessWidget {
               children: [
                 Text('Complaint ID: ${complaint.id}'),
                 SizedBox(height: 8),
-                Text('Email: ${complaint['email'] ?? 'N/A'}'),
+                Text('Email: ${complaintData['email'] ?? 'N/A'}'),
                 SizedBox(height: 8),
                 Text('Complaint:'),
-                Text(complaint['complaint'] ?? 'No details provided'),
+                Text(complaintData['complaint'] ?? 'No details provided'),
                 SizedBox(height: 8),
-                if (complaint['imageUrl'] != null && complaint['imageUrl'].isNotEmpty)
+                
+                // Updated imageUrl field check
+                if (complaintData.containsKey('imageUrl') && complaintData['imageUrl'].isNotEmpty)
                   Image.network(
-                    complaint['imageUrl'],
+                    complaintData['imageUrl'],
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
+                  
                 SizedBox(height: 8),
                 ElevatedButton(
                   child: Text('Update Status'),
                   onPressed: () => _showStatusUpdateDialog(context),
-                  
                 ),
               ],
             ),
@@ -142,6 +145,7 @@ class ComplaintCard extends StatelessWidget {
     );
   }
 }
+
 
 extension StringExtension on String {
   String capitalize() {

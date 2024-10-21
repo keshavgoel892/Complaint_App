@@ -3,9 +3,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'complaint_list_screen.dart';
 
 class AdminScreen extends StatelessWidget {
-  final int registeredComplaints = 10;
-  final int pendingComplaints = 1;
-  final int resolvedComplaints = 2;
+  final int registeredComplaints = 16;
+  final int pendingComplaints = 10;
+  final int resolvedComplaints = 8;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class AdminScreen extends StatelessWidget {
                     centerSpaceRadius: 40,
                     sections: [
                       PieChartSectionData(
-                        color: Colors.white,
+                        color: Colors.blue,
                         value: registeredComplaints.toDouble(),
                         title: 'Registered',
                         radius: 50,
@@ -109,7 +109,7 @@ class AdminScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildLegendItem(
-                      'Registered', Colors.white, registeredComplaints),
+                      'Registered', Colors.blue, registeredComplaints),
                   SizedBox(height: 8),
                   _buildLegendItem('Pending', Colors.orange, pendingComplaints),
                   SizedBox(
