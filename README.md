@@ -227,21 +227,6 @@ service cloud.firestore {
 4. Push to the branch (`git push origin feature/new-feature`)
 5. Create a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👨‍💻 Author
-
-- **Your Name** - [Your GitHub Profile](https://github.com/yourusername)
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the troubleshooting section
-2. Open an issue on GitHub
-3. Contact: your-email@example.com
 
 ## 🔮 Future Enhancements
 
